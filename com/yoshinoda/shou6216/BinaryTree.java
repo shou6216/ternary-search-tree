@@ -1,8 +1,4 @@
 package com.yoshinoda.shou6216;//
-// tree.java : 二分探索木
-//
-//             Copyright (C) 2016-2021 Makoto Hiroi
-//
 
 import java.util.function.Consumer;
 
