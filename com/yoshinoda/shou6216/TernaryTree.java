@@ -2,7 +2,7 @@ package com.yoshinoda.shou6216;//
 
 import java.util.function.Consumer;
 
-class BinaryTree {
+class TernaryTree {
     // 節
     // アクセスメソッドは用意しない
     private class Node {
@@ -52,7 +52,7 @@ class BinaryTree {
     // ルート
     private Node root;
 
-    BinaryTree() {
+    TernaryTree() {
         root = nil;
     }
 
@@ -67,10 +67,8 @@ class BinaryTree {
 
     /**
      * 三分木を表示します。
-     *
-     * @param action
      */
-    public void showTree(Consumer<Integer> action) {
-        root.forEach(action);
+    public void showTree() {
+        root.forEach(x -> System.out.print(x + " "));
     }
 }
