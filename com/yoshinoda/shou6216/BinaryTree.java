@@ -6,22 +6,22 @@ package com.yoshinoda.shou6216;//
 
 import java.util.function.Consumer;
 
-class BinaryTree<E extends Comparable<? super E>> {
+class BinaryTree {
     // 節
     // アクセスメソッドは用意しない
     private class Node {
-        E item;
+        Integer item;
         Node left;
         Node right;
 
-        Node(E x) {
+        Node(Integer x) {
             item = x;
             left = nil;
             right = nil;
         }
 
         // 挿入
-        Node add(E x) {
+        Node add(Integer x) {
             if (this == nil) {
                 return new Node(x);
             } else {
@@ -35,7 +35,7 @@ class BinaryTree<E extends Comparable<? super E>> {
         }
 
         // 巡回
-        void forEach(Consumer<? super E> action) {
+        void forEach(Consumer<Integer> action) {
             if (this != nil) {
                 left.forEach(action);
                 action.accept(item);
@@ -65,7 +65,7 @@ class BinaryTree<E extends Comparable<? super E>> {
      *
      * @param n ノード
      */
-    public void add(E n) {
+    public void add(Integer n) {
         root = root.add(n);
     }
 
@@ -74,7 +74,7 @@ class BinaryTree<E extends Comparable<? super E>> {
      *
      * @param action
      */
-    public void showTree(Consumer<? super E> action) {
+    public void showTree(Consumer<Integer> action) {
         root.forEach(action);
     }
 }
