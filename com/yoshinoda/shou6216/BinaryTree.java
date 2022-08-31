@@ -4,12 +4,9 @@ package com.yoshinoda.shou6216;//
 //             Copyright (C) 2016-2021 Makoto Hiroi
 //
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.function.Consumer;
 
-class BinaryTree<E extends Comparable<? super E>> implements Iterable<E> {
+class BinaryTree<E extends Comparable<? super E>> {
     // 節
     // アクセスメソッドは用意しない
     private class Node {
@@ -63,52 +60,21 @@ class BinaryTree<E extends Comparable<? super E>> implements Iterable<E> {
         root = nil;
     }
 
-    // 挿入
-    public void add(E x) {
-        root = root.add(x);
+    /**
+     * ノードを追加します
+     *
+     * @param n ノード
+     */
+    public void add(E n) {
+        root = root.add(n);
     }
 
-    // 巡回
-    public void forEach(Consumer<? super E> action) {
+    /**
+     * 三分木を表示します。
+     *
+     * @param action
+     */
+    public void showTree(Consumer<? super E> action) {
         root.forEach(action);
-    }
-
-    // イテレータ
-    public Iterator<E> iterator() {
-        // 無名クラス
-        return new Iterator<E>() {
-            {
-                stack = new ArrayList<>();
-                nextNode(root);
-            }
-
-            private List<Node> stack;
-
-            private void nextNode(Node node) {
-                while (node != nil) {
-                    stack.add(node);
-                    node = node.left;
-                }
-            }
-
-            public boolean hasNext() {
-                return stack.size() > 0;
-            }
-
-            public E next() {
-                Node node = stack.remove(stack.size() - 1);
-                nextNode(node.right);
-                return node.item;
-            }
-
-            public void remove() {
-                throw new UnsupportedOperationException();
-            }
-        };
-    }
-
-    // 文字列に変換
-    public String toString() {
-        return "(" + root.toString().trim() + ")";
     }
 }

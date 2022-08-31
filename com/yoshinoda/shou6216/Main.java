@@ -13,12 +13,9 @@ public class Main {
                 .collect(Collectors.toList());
         Collections.shuffle(nums);
         System.out.println(nums);
-        for (int x : nums) {
-            xs.add(x);
+        for (int n : nums) {
+            xs.add(n);
         }
-        System.out.println(xs);
-        xs.forEach(x -> System.out.print(x + " "));
-        for (int x : xs) System.out.print(x + " ");
-        System.out.println("");
+        xs.showTree(x -> System.out.print(x + " "));
     }
 }
